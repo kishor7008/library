@@ -12,7 +12,8 @@ import Heading from './component/repeate/Heading'
 import Libray from './component/repeate/Libray'
 import AboutUs from './component/repeate/AboutUs'
 import Book from './component/repeate/Book'
-import Login from './component/repeate/Login'
+import { Login } from './component/repeate/Login'
+// import Login from './component/repeate/Login'
 export default function App() {
   return (
     <>
