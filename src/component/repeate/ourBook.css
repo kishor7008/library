@@ -1,0 +1,35 @@
+.slider {
+    display: flex;
+    width: 100%;
+    /* height: 0vh; */
+    margin: 0 auto;
+    overflow: hidden;
+    padding-bottom: 1.5rem;
+}
+
+.item5 {
+    animation: animate 25s linear infinite;
+}
+
+.item5 img {
+    min-width: 200px;
+    padding: 0 30px;
+}
+
+.slider:hover .item5 {
+    animation-play-state: paused;
+}
+
+@keyframes animate {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(-1800px, 0, 0);
+    }
+}
+
+h5 {
+    margin-left: 20px;
+}

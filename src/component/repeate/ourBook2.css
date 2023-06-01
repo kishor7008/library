@@ -1,0 +1,36 @@
+.slider2 {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding-bottom: 1.5rem;
+}
+
+.item2 {
+    animation: animate2 25s linear infinite;
+}
+
+.item2 img {
+    min-width: 200px;
+    padding: 0 30px;
+}
+
+.slider2:hover .item2 {
+    animation-play-state: paused;
+}
+
+@keyframes animate2 {
+    0% {
+        transform: translate3d(-1800px, 0, 0);
+
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+h5 {
+    margin-left: 20px;
+    text-decoration: underline;
+}
