@@ -13,7 +13,12 @@ import Libray from './component/repeate/Libray'
 import AboutUs from './component/repeate/AboutUs'
 import Book from './component/repeate/Book'
 import { Login } from './component/repeate/Login'
+import StudentHeading from './component/students/StudentHeading'
+import StudentHome from './component/students/StudentHome'
 // import Login from './component/repeate/Login'
+import StudentCart from './component/students/StudentCart'
+import OrderDetails from './component/students/OrderDetails'
+import Slider from './component/students/Slider'
 export default function App() {
   return (
     <>
@@ -25,6 +30,7 @@ export default function App() {
           <Route path="/books" element={<Book />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/student" element={<Slider />} />
 
           {/* student */}
 
