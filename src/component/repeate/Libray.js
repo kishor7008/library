@@ -4,7 +4,7 @@ import Heading from './Heading'
 export default function Libray() {
     return (
         <>
-            {/* <Heading /> */}
+            <Heading />
             <div class="Library">
                 <div class="container">
                     <div class="row">

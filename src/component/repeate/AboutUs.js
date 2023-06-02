@@ -4,7 +4,7 @@ import Heading from './Heading'
 export default function AboutUs() {
     return (
         <>
-            {/* <Heading /> */}
+            <Heading />
             <div class="about">
                 <div class="container">
                     <div class="row">

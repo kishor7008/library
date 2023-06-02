@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-export default function StudentHeading() {
+export default function EmployeeHeading() {
     return (
         <>
             <header>
@@ -22,8 +22,10 @@ export default function StudentHeading() {
 
 
                                                 <li class="active"> <Link to='/student_home'>Home</Link> </li>
-                                                <li><Link to="/student_cart">Cart</Link></li>
-                                                <li><Link to='/student_order'>My Booking</Link></li>
+                                                <li><Link to="/student_cart">Approve</Link></li>
+                                                <li><Link to='/student_order'>Oder Status</Link></li>
+                                                <li><Link to='/'>Add Books</Link></li>
+                                                <li><Link to='/'>Report</Link></li>
                                                 <li><Link to='/'>Profile</Link></li>
 
                                             </ul>

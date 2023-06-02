@@ -19,6 +19,7 @@ import StudentHome from './component/students/StudentHome'
 import StudentCart from './component/students/StudentCart'
 import OrderDetails from './component/students/OrderDetails'
 import Slider from './component/students/Slider'
+import EmployeeHeading from './component/employee/EmployeeHeader'
 export default function App() {
   return (
     <>
@@ -30,13 +31,19 @@ export default function App() {
           <Route path="/books" element={<Book />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/student" element={<Slider />} />
 
           {/* student */}
+          <Route path="/student_home" element={<StudentHome />} />
+          <Route path="/student_cart" element={<StudentCart />} />
+          <Route path="/student_order" element={<OrderDetails />} />
+          <Route path="/slider" element={<Slider />} />
+
+          {/* employee */}
+          <Route path="/employee_heading" element={<EmployeeHeading />} />
 
         </Routes>
       </BrowserRouter>
-
+      <Footer />
     </>
   )
 }

@@ -4,7 +4,7 @@ import Heading from './Heading'
 export default function ContactUs() {
     return (
         <>
-            {/* <Heading /> */}
+            <Heading />
             <div style={{ height: "10vh" }}>
 
             </div>
