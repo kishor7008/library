@@ -24,6 +24,7 @@ export default function StudentHeading() {
                                                 <li class="active"> <Link to='/student_home'>Home</Link> </li>
                                                 <li><Link to="/student_cart">Cart</Link></li>
                                                 <li><Link to='/student_order'>My Booking</Link></li>
+                                                <li><Link to='/student_wallet'>Wallet</Link></li>
                                                 <li><Link to='/'>Profile</Link></li>
 
                                             </ul>

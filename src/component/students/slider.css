@@ -1,9 +1,6 @@
-/*------------------ Fonts ------------------*/
-
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+/* 
 
 
-/*------------------ Variables ------------------*/
 
 :root {
     --main-background: rgb(238, 255, 255);
@@ -12,7 +9,6 @@
 }
 
 
-/*------------------ Global Stuff ------------------*/
 
 * {
     margin: 0;
@@ -32,7 +28,6 @@ body {
 
 
 
-/*------------------ Custom Scrollbar ------------------*/
 
 ::-webkit-scrollbar {
     width: 7px;
@@ -225,4 +220,4 @@ h3.active {
 
 .small2 {
     left: 520px;
-}
+} */

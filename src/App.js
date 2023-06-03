@@ -20,6 +20,8 @@ import StudentCart from './component/students/StudentCart'
 import OrderDetails from './component/students/OrderDetails'
 import Slider from './component/students/Slider'
 import EmployeeHeading from './component/employee/EmployeeHeader'
+import Wallet from './component/students/Wallet'
+import AddBook from './component/employee/AddBook'
 export default function App() {
   return (
     <>
@@ -36,10 +38,12 @@ export default function App() {
           <Route path="/student_home" element={<StudentHome />} />
           <Route path="/student_cart" element={<StudentCart />} />
           <Route path="/student_order" element={<OrderDetails />} />
+          <Route path="/student_wallet" element={<Wallet />} />
           <Route path="/slider" element={<Slider />} />
 
           {/* employee */}
           <Route path="/employee_heading" element={<EmployeeHeading />} />
+          <Route path="/employee_addbook" element={<AddBook />} />
 
         </Routes>
       </BrowserRouter>

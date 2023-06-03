@@ -5,7 +5,7 @@ export default function OrderDetails() {
     return (
         <>
             <StudentHeading />
-            <div style={{ height: "20vh" }}></div>
+            <div style={{ height: "10vh" }}></div>
             <section class="h-100 gradient-custom" style={{ background: "white" }}>
                 <div class="container py-5 h-100">
                     <div class="row d-flex justify-content-center align-items-center h-100">
