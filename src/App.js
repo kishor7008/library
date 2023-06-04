@@ -22,6 +22,7 @@ import Slider from './component/students/Slider'
 import EmployeeHeading from './component/employee/EmployeeHeader'
 import Wallet from './component/students/Wallet'
 import AddBook from './component/employee/AddBook'
+import SliderFlower from './SliderFlower'
 export default function App() {
   return (
     <>
@@ -44,6 +45,7 @@ export default function App() {
           {/* employee */}
           <Route path="/employee_heading" element={<EmployeeHeading />} />
           <Route path="/employee_addbook" element={<AddBook />} />
+          <Route path="/silderflower" element={<SliderFlower />} />
 
         </Routes>
       </BrowserRouter>
