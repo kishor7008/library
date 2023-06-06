@@ -10,7 +10,7 @@ export default function Slider() {
 
           <div class="slider4">
             <div class="slider-prev"></div>
-            <ul>
+            <ul class="ul5">
               <li>
                 <img class="item small1" style={{ order: "0" }} src="https://images.unsplash.com/photo-1508766206392-8bd5cf550d1c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
                 />
@@ -41,33 +41,33 @@ export default function Slider() {
             <h3 data-index="1">biomedical technology</h3>
             <h3 data-index="0">internal medicine i</h3>
           </div>
-          {/* <div class="further-description">
-                        <h2 data-index="14">Capture breathtaking moments in nature and wildlife habitats.
-                            Learn composition, lighting, and advanced techniques from expert photographers.
-                            Unleash your creativity and craft stunning images that tell compelling stories.
-                            Ignite your passion for photography and explore the beauty of the natural world!</h2>
-                        <h2 data-index="13">Gain insights into consumer behavior, market research, branding,
-                            and advertising strategies. Hands-on projects and case studies empower you to
-                            develop effective marketing campaigns. Unlock your creative potential and
-                            embark on a dynamic career in the ever-evolving marketing landscape!</h2>
-                        <h2 data-index="12" class="active">Unlock the power of data and gain in-demand skills.
-                            Learn data collection, analysis, visualization, and interpretation. No prior
-                            experience required. Get hands-on with Python, R, and Excel. Make informed
-                            decisions based on data. Start your journey to becoming a data-driven
-                            professional!</h2>
-                        <h2 data-index="11">Discover cutting-edge advancements in medical devices,
-                            diagnostics, and therapies. From artificial organs to precision medicine,
-                            explore the intersection of biology and technology. Hands-on lab experiences
-                            and industry insights pave the way for a rewarding career in transforming
-                            healthcare. Be at the forefront of innovation and make a lasting impact on
-                            human well-being!</h2>
-                        <h2 data-index="10">Explore the intricacies of diagnosing and treating adult
-                            diseases! From common ailments to complex medical conditions, gain a
-                            comprehensive understanding of internal medicine. Clinical rotations and
-                            case-based learning will sharpen your diagnostic skills. Become a
-                            compassionate healthcare provider and make a difference in the lives of
-                            patients!</h2>
-                    </div> */}
+          <div class="further-description">
+            <h2 data-index="14">Capture breathtaking moments in nature and wildlife habitats.
+              Learn composition, lighting, and advanced techniques from expert photographers.
+              Unleash your creativity and craft stunning images that tell compelling stories.
+              Ignite your passion for photography and explore the beauty of the natural world!</h2>
+            <h2 data-index="13">Gain insights into consumer behavior, market research, branding,
+              and advertising strategies. Hands-on projects and case studies empower you to
+              develop effective marketing campaigns. Unlock your creative potential and
+              embark on a dynamic career in the ever-evolving marketing landscape!</h2>
+            <h2 data-index="12" class="active">Unlock the power of data and gain in-demand skills.
+              Learn data collection, analysis, visualization, and interpretation. No prior
+              experience required. Get hands-on with Python, R, and Excel. Make informed
+              decisions based on data. Start your journey to becoming a data-driven
+              professional!</h2>
+            <h2 data-index="11">Discover cutting-edge advancements in medical devices,
+              diagnostics, and therapies. From artificial organs to precision medicine,
+              explore the intersection of biology and technology. Hands-on lab experiences
+              and industry insights pave the way for a rewarding career in transforming
+              healthcare. Be at the forefront of innovation and make a lasting impact on
+              human well-being!</h2>
+            <h2 data-index="10">Explore the intricacies of diagnosing and treating adult
+              diseases! From common ailments to complex medical conditions, gain a
+              comprehensive understanding of internal medicine. Clinical rotations and
+              case-based learning will sharpen your diagnostic skills. Become a
+              compassionate healthcare provider and make a difference in the lives of
+              patients!</h2>
+          </div>
         </div>
 
         <div class="home-header">

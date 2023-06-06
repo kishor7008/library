@@ -23,6 +23,12 @@ import EmployeeHeading from './component/employee/EmployeeHeader'
 import Wallet from './component/students/Wallet'
 import AddBook from './component/employee/AddBook'
 import SliderFlower from './SliderFlower'
+import StudentHomePage from './component/students/StudentHomePage'
+import Approve from './component/employee/Approve'
+import OrderStatus from './component/employee/OrderStatus'
+import Report from './component/employee/Report'
+import EmployeeHome from './component/employee/EmployeeHome'
+import Profile from './component/students/Profile'
 export default function App() {
   return (
     <>
@@ -36,7 +42,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
 
           {/* student */}
-          <Route path="/student_home" element={<StudentHome />} />
+          <Route path="/student_home" element={<StudentHomePage />} />
           <Route path="/student_cart" element={<StudentCart />} />
           <Route path="/student_order" element={<OrderDetails />} />
           <Route path="/student_wallet" element={<Wallet />} />
@@ -44,8 +50,13 @@ export default function App() {
 
           {/* employee */}
           <Route path="/employee_heading" element={<EmployeeHeading />} />
+          <Route path="/employee_home" element={<EmployeeHome />} />
+
           <Route path="/employee_addbook" element={<AddBook />} />
-          <Route path="/silderflower" element={<SliderFlower />} />
+          <Route path="/employee_approve" element={<Approve />} />
+          <Route path="/employee_order" element={<OrderStatus />} />
+          <Route path="/Employee_report" element={<Report />} />
+          <Route path="/profile" element={<Profile />} />
 
         </Routes>
       </BrowserRouter>

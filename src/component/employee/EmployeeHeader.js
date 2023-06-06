@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Profile from '../students/Profile'
+import EmployeeProfile from './EmployeeProfile'
 export default function EmployeeHeading() {
     return (
         <>
@@ -21,12 +23,12 @@ export default function EmployeeHeading() {
                                             <ul class="menu-area-main">
 
 
-                                                <li class="active"> <Link to='/student_home'>Home</Link> </li>
-                                                <li><Link to="/student_cart">Approve</Link></li>
-                                                <li><Link to='/student_order'>Oder Status</Link></li>
-                                                <li><Link to='/'>Add Books</Link></li>
-                                                <li><Link to='/'>Report</Link></li>
-                                                <li><Link to='/'>Profile</Link></li>
+                                                <li class="active"> <Link to='/employee_home'>Home</Link> </li>
+                                                <li><Link to="/employee_approve">Approve</Link></li>
+                                                <li><Link to='/employee_order'>Oder Status</Link></li>
+                                                <li><Link to='/employee_addbook'>Add Books</Link></li>
+                                                <li><Link to='/employee_report'>Report</Link></li>
+                                                <li><Link to='/'><EmployeeProfile /></Link></li>
 
                                             </ul>
                                         </nav>

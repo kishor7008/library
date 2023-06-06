@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Profile from './Profile'
 export default function StudentHeading() {
     return (
         <>
@@ -23,7 +24,7 @@ export default function StudentHeading() {
                                                 <li><Link to="/student_cart">Cart</Link></li>
                                                 <li><Link to='/student_order'>My Booking</Link></li>
                                                 <li><Link to='/student_wallet'>Wallet</Link></li>
-                                                <li><Link to='/'>Profile</Link></li>
+                                                <li><Link to='/'><Profile /></Link></li>
                                             </ul>
                                         </nav>
                                     </div>

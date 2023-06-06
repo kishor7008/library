@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './home.css'
 import StudentHeading from "./StudentHeading";
+import Slider from "./Slider";
 const BASE_URL = "https://movie-list.alphacamp.io";
 const INDEX_URL = BASE_URL + "/api/v1/movies/";
 const POSTER_URL = BASE_URL + "/posters/";
@@ -201,7 +202,7 @@ const StudentHome = () => {
 
     return (
         <>
-            <StudentHeading />
+            <Slider />
             <div style={{ height: "20vh" }}></div>
             <div className="container">
                 {/* <div className="control-panel mb-3">

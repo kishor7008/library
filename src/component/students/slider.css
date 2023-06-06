@@ -2,33 +2,6 @@
 
 
 
-:root {
-    --main-background: rgb(238, 255, 255);
-    --main-text-color: rgb(0, 27, 27);
-    --dark-cyan: rgb(0, 133, 133);
-}
-
-
-
-* {
-    margin: 0;
-    padding: 0;
-    color: var(--main-text-color);
-    box-sizing: border-box;
-    font-family: 'Quicksand', sans-serif;
-    text-transform: capitalize;
-    color: var(--main-text-color);
-}
-
-body {
-    height: fit-content;
-    min-height: 100vh;
-    background: no-repeat linear-gradient(50deg, var(--main-background) 0%, rgb(59, 192, 192) 40%, rgb(105, 204, 204) 50%, var(--main-background) 75%);
-}
-
-
-
-
 ::-webkit-scrollbar {
     width: 7px;
 }
@@ -94,7 +67,7 @@ h1 {
     position: relative;
 }
 
-ul {
+.ul5 {
     list-style: none;
     display: flex;
     flex-direction: row;
