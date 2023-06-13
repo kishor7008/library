@@ -9,23 +9,47 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { Container } from "@mui/material";
-
-export const Login =() =>{
+import { API_URL } from "../../App";
+import { useNavigate } from "react-router-dom";
+export const Login = () => {
+    const navigate = useNavigate()
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get("email"),
-            password: data.get("password"),
-        });
+     
+        fetch(`${API_URL}/both/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify({
+                email: data.get("email"), password: data.get("password")
+            })
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data.message.role)
+                if (data.message.role == "Student") {
+                    navigate('/student_home')
+                    localStorage.clear()
+                    localStorage.setItem("token",data.message.token)
+                } else if (data.message.role == "Admin") {
+                    navigate('/employee_home')
+                    localStorage.clear()
+                    localStorage.setItem("token",data.message.token)
+                } else {
+                    navigate('/')
+
+                }
+            })
     };
 
     return (
-        <Container component="main"  m="auto" w={300}>
+        <Container component="main" m="auto" w={300}>
             <Box
                 sx={{
                     marginTop: 8,
-                    w:200
+                    w: 200
                 }}
             >
                 <Grid container marginLeft={"30%"}>

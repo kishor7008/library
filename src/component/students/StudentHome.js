@@ -18,9 +18,9 @@ const StudentHome = () => {
     const [keyword, setKeyword] = useState("");
 
     useEffect(() => {
-        axios.get(INDEX_URL)
+        axios.get("https://book-admin.onrender.com/getBook")
             .then((response) => {
-                setMovies(response.data.results);
+                setMovies(response.data.message);
             })
             .catch((error) => {
                 console.log(error);
@@ -35,12 +35,12 @@ const StudentHome = () => {
                     <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={item.id}>
                         <div className="card mb-3">
                             <img
-                                src={POSTER_URL + item.image}
+                                src={item.image}
                                 className="card-img-top"
                                 alt="Movie Poster"
                             />
                             <div className="card-body">
-                                <h5 className="card-title">{item.title}</h5>
+                                <h5 className="card-title">{item.name}</h5>
                             </div>
                             <div className="card-footer" style={{ display: "flex" }}>
                                 <button
@@ -73,7 +73,7 @@ const StudentHome = () => {
             <ul className="list-group mt-2">
                 {data.map((item) => (
                     <li className="list-group-item" key={item.id}>
-                        <h5 className="list-title">{item.title}</h5>
+                        <h5 className="list-title">{item.name}</h5>
                         <div className="">
                             <button
                                 type="button"

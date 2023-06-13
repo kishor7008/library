@@ -64,8 +64,8 @@ export default function Footer() {
                     </div>
 
                     <div class="text-center text-dark p-3" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
-                        © 2020 Copyright:
-                        <a class="text-dark" href="https://kishordeveloper.com/">kishordeveloper</a>
+                        © 2023  Copyright :
+                        <a class="text-dark" href="https://kishordeveloper.com/">Kishor <i class="fa-solid fa-heart fa-flip" style={{ color: "#dd0808" }}> </i> Itishree</a>
                     </div>
                 </footer>
 

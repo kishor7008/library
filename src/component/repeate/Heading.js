@@ -23,6 +23,7 @@ export default function Heading() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    
     return (
         <>
             <header>
@@ -46,8 +47,9 @@ export default function Heading() {
                                                 <li><Link to="/books">Our Books</Link></li>
                                                 <li><Link to="/library">library</Link></li>
                                                 <li><Link to='/contactus'>Contact us</Link></li>
+                                                {/* <li><Link to='/student_home'>Login</Link></li> */}
                                                 <li onClick={handleOpen} style={{color :"white", fontWeight:"500"}}> LOGIN</li>
-                                                <li><Link to='/'>Register</Link></li>
+                                                <li><Link to='/employee_home'>Register</Link></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -64,7 +66,7 @@ export default function Heading() {
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                 >
-                    <Login/>
+                    <Login />
                 </Modal>
             </header>
         </>

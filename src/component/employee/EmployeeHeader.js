@@ -24,7 +24,7 @@ export default function EmployeeHeading() {
 
 
                                                 <li class="active"> <Link to='/employee_home'>Home</Link> </li>
-                                                <li><Link to="/employee_approve">Approve</Link></li>
+                                                <li><Link to="/create_order">Create Order</Link></li>
                                                 <li><Link to='/employee_order'>Oder Status</Link></li>
                                                 <li><Link to='/employee_addbook'>Add Books</Link></li>
                                                 <li><Link to='/employee_report'>Report</Link></li>

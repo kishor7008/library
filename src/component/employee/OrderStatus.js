@@ -1,7 +1,66 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import EmployeeHeading from './EmployeeHeader'
-
+import { useScrollTrigger } from '@mui/material'
+import { API_URL } from '../../App'
+import OrderDetailsCard from './OrderDetailsCard'
 export default function OrderStatus() {
+    const [orderType, setOrderType] = useState("Pending")
+    const [data, setData] = useState([])
+    const [searchShow, setSearchShow] = useState(false)
+    const [listShow, setListShow] = useState(true)
+    const [cardShow, setCardShow] = useState(false)
+    const [inputText, setInputText] = useState("")
+    const [details, setDetails] = useState()
+    const changeType = (data) => {
+        setOrderType(data)
+
+    }
+
+    const getDetails = () => {
+        fetch(`${API_URL}/order/details/${inputText}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            }
+
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data.message)
+                setDetails(data.message)
+                setListShow(false)
+                setCardShow(true)
+            })
+
+
+    }
+
+
+    const showData = (orderType) => {
+        console.log(orderType, "line 14")
+        fetch(`${API_URL}/order/${orderType}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            }
+
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data.message)
+                setData(data.message)
+                setListShow(true)
+                setCardShow(false)
+
+            })
+    }
+    useEffect(() => {
+        showData(orderType)
+    }, [])
+    useEffect(() => {
+        showData(orderType)
+    }, [orderType])
+    console.log(orderType)
     return (
         <>
             <EmployeeHeading />
@@ -9,79 +68,68 @@ export default function OrderStatus() {
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
-                        <div class="col-sm-6"><h2>Order <b>Status</b></h2></div>
+
                         <div class="col-sm-6">
                             <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-info active">
-                                    <input type="radio" name="status" value="all" checked="checked" /> All
+                                <label class="btn btn-info active" onClick={() => changeType("Pending")}>
+                                    Pending
                                 </label>
-                                <label class="btn btn-success">
-                                    <input type="radio" name="status" value="active" /> Active
+                                <label class="btn btn-info active" onClick={() => changeType("Approved")}>
+                                    Approved
                                 </label>
-                                <label class="btn btn-warning">
-                                    <input type="radio" name="status" value="inactive" /> Inactive
+                                <label class="btn btn-success" onClick={() => changeType("Received")}>
+                                    Received
                                 </label>
-                                <label class="btn btn-danger">
-                                    <input type="radio" name="status" value="expired" /> Expired
+                                <label class="btn btn-warning" onClick={() => changeType("Return")}>
+                                    Return
                                 </label>
+                                <label class="btn btn-danger" onClick={() => changeType("Complete")}>
+                                    Complete
+                                </label>
+                                <label class="btn btn-danger" onClick={() => changeType("Cancel")}>
+                                    Cancel
+                                </label>
+                                <label class="btn btn-danger" onClick={() => setSearchShow(!searchShow)}>
+                                    Search
+                                </label>
+
+
                             </div>
+                            {searchShow && <> <input onChange={(e) => setInputText(e.target.value)} /> <button onClick={getDetails}>Search</button></>}
+
                         </div>
                     </div>
                 </div>
-                <table class="table table-striped table-hover">
+                {listShow && <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Domain</th>
-                            <th>Created&nbsp;On</th>
+                            <th>Customer Name</th>
+                            <th>Order ID</th>
+                            <th>Date</th>
                             <th>Status</th>
-                            <th>Server&nbsp;Location</th>
-                            <th>Action</th>
+                            <th>Book Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-status="active">
-                            <td>1</td>
-                            <td><a href="#">loremvallis.com</a></td>
-                            <td>04/10/2013</td>
-                            <td><span class="label label-success">Active</span></td>
-                            <td>Buenos Aires</td>
-                            <td><a href="#" class="btn btn-lg manage">Manage</a></td>
-                        </tr>
-                        <tr data-status="inactive">
-                            <td>2</td>
-                            <td><a href="#">quisquamut.net</a></td>
-                            <td>05/08/2014</td>
-                            <td><span class="label label-warning">Inactive</span></td>
-                            <td>Australia</td>
-                            <td><a href="#" class="btn btn-lg manage">Manage</a></td>
-                        </tr>
-                        <tr data-status="active">
-                            <td>3</td>
-                            <td><a href="#">convallissed.com</a></td>
-                            <td>11/05/2015</td>
-                            <td><span class="label label-success">Active</span></td>
-                            <td>United Kingdom</td>
-                            <td><a href="#" class="btn btn-lg manage">Manage</a></td>
-                        </tr>
-                        <tr data-status="expired">
-                            <td>4</td>
-                            <td><a href="#">phasellusri.org</a></td>
-                            <td>06/09/2016</td>
-                            <td><span class="label label-danger">Expired</span></td>
-                            <td>Romania</td>
-                            <td><a href="#" class="btn btn-lg manage">Manage</a></td>
-                        </tr>
-                        <tr data-status="inactive">
-                            <td>5</td>
-                            <td><a href="#">facilisleo.com</a></td>
-                            <td>12/08/2017</td>
-                            <td><span class="label label-warning">Inactive</span></td>
-                            <td>Germany</td>
-                            <td><a href="#" class="btn btn-lg manage">Manage</a></td>
-                        </tr>
+                        {
+                            data && data.map((item) => (
+                                <tr data-status="active">
+                                    <td>{item.student.name}</td>
+                                    <td><a href="#">JHBHXBJXBH&&</a></td>
+                                    <td>{item.updatedAt}</td>
+                                    <td><button class="bg-primary">{item.status}</button></td>
+                                    <td style={{ textTransform: "capitalize" }}>{item.bookDetails.name}</td>
+                                    <td>{item.bookDetails.quantity}</td>
+                                    <td>{item.bookDetails.price}</td>
+                                </tr>
+                            ))
+                        }
+
                     </tbody>
-                </table>
+                </table>}
+                {cardShow && <OrderDetailsCard data={details} />}
             </div>
         </>
     )

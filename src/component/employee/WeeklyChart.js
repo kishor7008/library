@@ -41,7 +41,7 @@ class WeeklyChart extends React.Component {
         return (
 
 
-            <div id="chart">
+            <div id="chart" >
                 <ReactApexChart options={this.state.options} series={this.state.series} type="polarArea" />
             </div>
 

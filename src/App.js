@@ -29,6 +29,12 @@ import OrderStatus from './component/employee/OrderStatus'
 import Report from './component/employee/Report'
 import EmployeeHome from './component/employee/EmployeeHome'
 import Profile from './component/students/Profile'
+
+import SearchOrderId from './component/employee/SearchOrderId'
+import Card from './Card'
+import OrderDetailsCard from './component/employee/OrderDetailsCard'
+import CreateOrder from './component/employee/CreateOrder'
+export const API_URL = "http://localhost:4000"
 export default function App() {
   return (
     <>
@@ -55,8 +61,15 @@ export default function App() {
           <Route path="/employee_addbook" element={<AddBook />} />
           <Route path="/employee_approve" element={<Approve />} />
           <Route path="/employee_order" element={<OrderStatus />} />
-          <Route path="/Employee_report" element={<Report />} />
+          <Route path="/employee_report" element={<Report />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/modify" element={<SearchOrderId />} />
+          <Route path="/card" element={<OrderDetailsCard />} />
+          <Route path="/create_order" element={<CreateOrder />} />
+
+
+
+
 
         </Routes>
       </BrowserRouter>
