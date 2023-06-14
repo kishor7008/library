@@ -31,7 +31,7 @@ const EmployeeHomeCart = () => {
     const [errorMode, setErrorMode] = useState(false);
     const [keyword, setKeyword] = useState("");
     const[open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {setOpen(true);console.log("jgvg ghvhnghnvh")};
     const handleClose = () => setOpen(false);
     useEffect(() => {
         axios.get("https://book-admin.onrender.com/getBook")
@@ -63,7 +63,7 @@ const EmployeeHomeCart = () => {
 
                                 <button
                                     className="btn bg-warning " data-id={item.id}
-                                    onClick={() => console.log("eqlmwa")}
+                                    onClick={() => console.log("hk")}
                                 >
                                     Datails 
 
@@ -83,7 +83,7 @@ const EmployeeHomeCart = () => {
                                 <button
                                     className="btn bg-dark btn-add-favorite"
                                     data-id={item.id}
-                                    onClick={() =>  handleOpen }
+                                    onClick={ handleOpen }
                                 >
                                     <i class="fa-solid fa-trash" style={{ color: "#ea2610" }}></i>
 
@@ -93,7 +93,7 @@ const EmployeeHomeCart = () => {
 
                                 <Modal
                                     open={open}
-                                    onClose={handleOpen}
+                                    onClose={handleClose}
                                     aria-labelledby="modal-modal-title"
                                     aria-describedby="modal-modal-description"
                                 >
