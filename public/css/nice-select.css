@@ -28,6 +28,7 @@
   text-align: left !important;
   white-space: nowrap;
   font-weight: 300;
+  display:none
 }
 
 .nice-select:after {

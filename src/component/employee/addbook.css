@@ -63,3 +63,6 @@ button:focus {
     box-shadow: none !important;
     outline-width: 0
 }
+.selectDiv{
+    height: 5.5vh;
+}
