@@ -64,7 +64,7 @@ export default function App() {
           <Route path="/employee_report" element={<Report />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/modify" element={<SearchOrderId />} />
-          <Route path="/card" element={<OrderDetailsCard />} />
+          <Route path="/card" element={<Card />} />
           <Route path="/create_order" element={<CreateOrder />} />
 
 

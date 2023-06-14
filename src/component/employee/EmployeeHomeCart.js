@@ -1,14 +1,28 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import './home.css'
-import StudentHeading from "./StudentHeading";
-import Slider from "./Slider";
+import '../students/home.css'
+import Slider from "../students/Slider";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 const BASE_URL = "https://movie-list.alphacamp.io";
 const INDEX_URL = BASE_URL + "/api/v1/movies/";
 const POSTER_URL = BASE_URL + "/posters/";
 const MOVIES_PER_PAGE = 12;
 
-const StudentHome = () => {
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
+const EmployeeHomeCart = () => {
     const [movies, setMovies] = useState([]);
     const [filteredMovies, setFilteredMovies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -16,7 +30,9 @@ const StudentHome = () => {
     const [currentSearch, setCurrentSearch] = useState("off");
     const [errorMode, setErrorMode] = useState(false);
     const [keyword, setKeyword] = useState("");
-
+    const[open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     useEffect(() => {
         axios.get("https://book-admin.onrender.com/getBook")
             .then((response) => {
@@ -38,27 +54,62 @@ const StudentHome = () => {
                                 src={item.image}
                                 className="card-img-top"
                                 alt="Movie Poster"
-                                
+
                             />
                             <div className="card-body">
                                 <h5 className="card-title">{item.name}</h5>
                             </div>
                             <div className="card-footer" style={{ display: "flex" }}>
-                                
+
                                 <button
-                                    className="btn bg-warning "                                    data-id={item.id}
-                                    onClick={() => addToFavorite(item.id)}
+                                    className="btn bg-warning " data-id={item.id}
+                                    onClick={() => console.log("eqlmwa")}
                                 >
-                                    Datails
+                                    Datails 
+
+
+
+
+
+
+
+
+
+                         {/* on click to show modal */}
+
+
 
                                 </button>
                                 <button
                                     className="btn bg-dark btn-add-favorite"
                                     data-id={item.id}
-                                    onClick={() => addToFavorite(item.id)}
+                                    onClick={() =>  handleOpen }
                                 >
-                                    +
+                                    <i class="fa-solid fa-trash" style={{ color: "#ea2610" }}></i>
+
                                 </button>
+                                {/* <Button >Open modal</Button> */}
+
+
+                                <Modal
+                                    open={open}
+                                    onClose={handleOpen}
+                                    aria-labelledby="modal-modal-title"
+                                    aria-describedby="modal-modal-description"
+                                >
+                                    <Box sx={style}>
+                                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                                            Text in a modal
+                                        </Typography>
+                                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                                        </Typography>
+                                    </Box>
+                                </Modal>
+
+
+
+                                
 
                             </div>
                         </div>
@@ -75,7 +126,7 @@ const StudentHome = () => {
                     <li className="list-group-item" key={item.id}>
                         <h5 className="list-title">{item.name}</h5>
                         <div className="">
-                            <button
+                            <button 
                                 type="button"
                                 className="btn btn-primary btn-show-movie"
                                 // data-bs-toggle="modal"
@@ -90,7 +141,7 @@ const StudentHome = () => {
                                 data-id={item.id}
                                 onClick={() => addToFavorite(item.id)}
                             >
-                                +
+                                <i class="fa-solid fa-trash" style={{ color: "#ea2610" }}></i>
                             </button>
                         </div>
                     </li>
@@ -253,4 +304,6 @@ const StudentHome = () => {
     );
 };
 
-export default StudentHome;
+export default EmployeeHomeCart;
+
+
