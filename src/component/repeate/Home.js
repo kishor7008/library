@@ -16,8 +16,8 @@ export default function Home() {
             <section class="slider_section">
                 <div id="myCarousel" class="carousel slide banner-main" data-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="first-slide" src="images/banner.jpg" alt="First slide" />
+                        <div class="carousel-item active" style={{width:"100%",height:"80vh"}}>
+                            <img class="first-slide" src="images/banner.jpg" alt="First slide"  style={{width:"100%",height:"100%"}}/>
                             <div class="container">
                                 <div class="carousel-caption relative">
                                     <h1>The Best Libraries That<br /> Every Book Lover Must<br /> Visit!</h1>

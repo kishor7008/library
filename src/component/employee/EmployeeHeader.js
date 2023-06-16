@@ -28,7 +28,7 @@ export default function EmployeeHeading() {
                                                 <li><Link to='/employee_order'>Oder Status</Link></li>
                                                 <li><Link to='/employee_addbook'>Add Books</Link></li>
                                                 <li><Link to='/employee_report'>Report</Link></li>
-                                                <li><Link to='/'><EmployeeProfile /></Link></li>
+                                                <li><Link to=''><EmployeeProfile /></Link></li>
 
                                             </ul>
                                         </nav>

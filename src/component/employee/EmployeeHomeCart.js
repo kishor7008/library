@@ -3,22 +3,26 @@ import axios from "axios";
 import '../students/home.css'
 import Slider from "../students/Slider";
 import Box from '@mui/material/Box';
+import { Dialog } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import './employeeModal.css'
 import Button from '@mui/material/Button';
+import { API_URL } from "../../App";
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 const BASE_URL = "https://movie-list.alphacamp.io";
 const INDEX_URL = BASE_URL + "/api/v1/movies/";
 const POSTER_URL = BASE_URL + "/posters/";
 const MOVIES_PER_PAGE = 12;
+
+
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     // width: 400,
-
+    // bgcolor:"background.paper"
     // boxShadow: 24,
 
 };
@@ -31,22 +35,97 @@ const EmployeeHomeCart = () => {
     const [errorMode, setErrorMode] = useState(false);
     const [keyword, setKeyword] = useState("");
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => { setOpen(true); console.log("jgvg ghvhnghnvh") };
+
+
+
+    const [bookName, setBookName] = useState()
+    const [bookCategory, setBookCategory] = useState()
+    const [bookAuthor, setBookAuthor] = useState()
+    const [bookImage, setBookImage] = useState()
+    const [bookDes, setBookDes] = useState()
+    const [bookId, setBookId] = useState()
+
+    const handleOpen = (category, name, author, image, description,id) => {
+        setOpen(true);
+        setBookCategory(category)
+        setBookName(name)
+        setBookAuthor(author)
+        setBookImage(image)
+        setBookDes(description)
+        setBookId(id)
+        console.log(category, name, image, description, author,id, "line 34r5jweiugfy3e7tfuy c1b7623egdi6---------------------------------------------------------------------------------------")
+    };
     const handleClose = () => setOpen(false);
+
+let bookList=async()=>{
+    axios.get(`${API_URL}/getbook`)
+    .then((response) => {
+        setMovies(response.data.message);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+}
+
     useEffect(() => {
-        axios.get("https://book-admin.onrender.com/getBook")
-            .then((response) => {
-                setMovies(response.data.message);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        bookList()
     }, []);
+
+
+const editbook = (e,id)=>{
+    e.preventDefault()
+    fetch(`${API_URL}/edit/book/${id}`,{
+        method:"PUT",
+        headers:{
+            "Content-Type":"application/json",
+            Accept:"application/json"
+        },
+        body:JSON.stringify({
+            category:bookCategory,
+            name:bookName,
+            author:bookAuthor,
+            image:bookImage,
+            description:bookDes
+        })
+    }).then(res=>res.json())
+    .then(data=>{
+       if(data.status==true){
+        bookList()
+        alert(data.message)
+        handleClose()
+       }else{
+        alert(data.message)
+       }
+    })
+    return false
+
+}
+
+const deleteBook=(id)=>{
+fetch(`${API_URL}/delete/book/${id}`,{
+    method:"DELETE",
+    headers:{
+        "Content-Type":"application/json",
+        Accept:"application/json"
+    }
+}).then(res=>res.json())
+.then(data=>{
+    if(data.status==true){
+     bookList()
+     alert(data.message)
+     handleClose()
+    }else{
+     alert(data.message)
+    }
+ })
+}
+
 
     const renderMovieListCardMode = (data) => {
 
         return (
             <div className="row">
+
                 {data.map((item) => (
                     <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={item.id}>
                         <div className="card mb-3">
@@ -63,33 +142,23 @@ const EmployeeHomeCart = () => {
 
                                 <button
                                     className="btn bg-warning " data-id={item.id}
-                                    onClick={() => console.log("hk")}
+                                onClick={() => handleOpen(item.category, item.name, item.author, item.image, item.description,item._id)}
+                                
                                 >
                                     Datails
 
-
-
-
-
-
-
-
-
                                     {/* on click to show modal */}
-
-
 
                                 </button>
                                 <button
                                     className="btn bg-dark btn-add-favorite"
-                                    data-id={item.id}
-                                    onClick={handleOpen}
+                                    data-id={item._id}
+                                    onClick={() => deleteBook(item._id)}
                                 >
                                     <i class="fa-solid fa-trash" style={{ color: "#ea2610" }}></i>
 
                                 </button>
                                 {/* <Button >Open modal</Button> */}
-
 
                                 <Modal
                                     open={open}
@@ -98,7 +167,9 @@ const EmployeeHomeCart = () => {
                                     aria-describedby="modal-modal-description"
                                     hideBackdrop="true"
                                     disableBackdropClick
+                                    disableEscapeKeyDown
                                 >
+                                    {/* <Dialog onClose={handleClose} /> */}
                                     <Box sx={style} >
 
 
@@ -106,7 +177,10 @@ const EmployeeHomeCart = () => {
 
 
                                         <div class=" mx-auto">
+
                                             <div class="card mt-2 mx-auto p-4 bg-light">
+                                                <div style={{ textAlign: "right", fontSize: "34px", padding: "10px", position: "absolute", top: "0", right: "0", color: "black",cursor:"pointer" }} onClick={handleClose}>x</div>
+                                                <br />
                                                 <div class="card-body bg-light">
 
                                                     <div class="container">
@@ -120,36 +194,32 @@ const EmployeeHomeCart = () => {
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="form_name">Book Category *</label>
-                                                                            <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required." />
+                                                                            {/* <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required." value={bookCategory} onChange={(e) => setBookCategory(e.target.value)} /> */}
+                                                                            <select onChange={(e)=>setBookCategory(e.target.value)}>
+                                                                                <option value="Literary Fiction"
+                                                                                    selected={bookCategory == "Literary Fiction" ? true : false}>Literary Fiction</option>
+                                                                                <option value="Classics" selected={bookCategory == "Classics" ? true : false}>Classics</option>
+
+                                                                                <option value="History" selected={bookCategory == "History" ? true : false}>History</option>
+                                                                                <option value="Religion and Mythology" selected={bookCategory == "Religion and Mythology" ? true : false}>Religion and Mythology</option>
+                                                                                <option value="Historical Fiction" selected={bookCategory == "Historical Fiction" ? true : false}>Historical Fiction</option>
+                                                                                <option value="Mythological Fiction"
+                                                                                    selected={bookCategory == "Mythological Fiction Fiction" ? true : false}>Mythological Fiction</option>
+                                                                                <option value="Thriller and Mystery" selected={bookCategory == "Thriller and Mystery" ? true : false}>Thriller and Mystery</option>
+                                                                                <option value="Sci-Fi and Fantasy" selected={bookCategory == "ci-Fi and Fantasy" ? true : false}>Sci-Fi and Fantasy</option>
+                                                                                <option value="Humour" selected={bookCategory == "Humour" ? true : false}>Humour</option>
+                                                                                <option value="Chick-lit" selected={bookCategory == "Chick-lit" ? true : false}>Chick-lit</option>
+                                                                                <option value="Biography and Memoir" selected={bookCategory == "Biography and Memoir" ? true : false}>Biography and Memoir</option>
+                                                                                <option value="Self-Help" selected={bookCategory == "Self-Help" ? true : false}>Self-Help</option>
+                                                                                <option value="Travel and Places" selected={bookCategory == "Travel and Places" ? true : false}>Travel and Places</option>
+                                                                            </select>
 
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="form_lastname">Book Name *</label>
-                                                                            <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required." />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="form_email">Image URL *</label>
-                                                                            <input id="form_email" type="text" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required." />
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="form_need">Please specify your need *</label>
-                                                                            <select id="form_need" name="need" class="form-control selectText" required="required" data-error="Please specify your need." style={{ width: "250px", height: "5.5vh" }}>
-                                                                                <option value="" selected disabled style={{ fontSize: "14px", fontWeight: "bold" }}>--Select Your Issue--</option>
-                                                                                <option style={{ fontSize: "14px", fontWeight: "bold" }}>Request Invoice for order</option>
-                                                                                <option style={{ fontSize: "14px", fontWeight: "bold" }}>Request order status</option>
-                                                                                <option style={{ fontSize: "14px", fontWeight: "bold" }}>Haven't received cashback yet</option>
-                                                                                <option style={{ fontSize: "14px", fontWeight: "bold" }}>Other</option>
-                                                                            </select>
-
+                                                                            <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required." value={bookName} onChange={(e) => setBookName(e.target.value)} />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -157,15 +227,26 @@ const EmployeeHomeCart = () => {
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="form_email">Author *</label><br />
-                                                                            <input id="form_email" type="text" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required." />
+                                                                            <input id="form_email" type="text" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required." value={bookAuthor} onChange={(e) => setBookAuthor(e.target.value)} />
 
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="form_email">Image URL *</label>
+                                                                            <input id="form_email" type="text" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required." value={bookImage} onChange={(e) => setBookImage(e.target.value)} />
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="row">
+
+                                                                    <div class="col-md-12">
 
                                                                         <div class="form-group">
                                                                             <label for="form_message">Description *</label>
-                                                                            <textarea id="form_message" name="message" class="form-control" placeholder="Write your message here." required="required" data-error="Please, leave us a message."></textarea
+                                                                            <textarea id="form_message" name="message" class="form-control" placeholder="Write your message here." required="required" data-error="Please, leave us a message." value={bookDes} onChange={(e) => setBookDes(e.target.value)} style={{ width: "100%", height: "20vh" }}></textarea
                                                                             >
                                                                         </div>
 
@@ -175,7 +256,7 @@ const EmployeeHomeCart = () => {
                                                                     <div class="col-md-12">
 
                                                                         <input type="submit" class="btn btn-success btn-send  pt-2 btn-block
-                                                                       " value="Send Message" />
+                                                                       " value="Save" onClick={(e)=>editbook(e,item._id)}/>
 
                                                                     </div>
 
@@ -205,8 +286,9 @@ const EmployeeHomeCart = () => {
                             </div>
                         </div>
                     </div>
-                ))}
-            </div>
+                ))
+                }
+            </div >
         );
     };
 
@@ -325,7 +407,7 @@ const EmployeeHomeCart = () => {
 
         if (keyword) {
             const results = movies.filter((movie) =>
-                movie.title.toLowerCase().includes(keyword.toLowerCase())
+                movie.name.toLowerCase().includes(keyword.toLowerCase())
             );
 
             setFilteredMovies(results);

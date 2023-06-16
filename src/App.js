@@ -34,6 +34,13 @@ import SearchOrderId from './component/employee/SearchOrderId'
 import Card from './Card'
 import OrderDetailsCard from './component/employee/OrderDetailsCard'
 import CreateOrder from './component/employee/CreateOrder'
+import Setting from './component/employee/Setting'
+import Help from './component/employee/Help'
+import RequestList from './component/employee/RequestList'
+import EmployeeProfileDetails from './component/employee/EmployeeProfileDetails'
+import CustomerDetails from './component/employee/CustomerDetails'
+import PaymentCard from './component/employee/PaymentCard'
+import Invoice from './component/employee/Invoice'
 export const API_URL = "http://localhost:4000"
 export default function App() {
   return (
@@ -66,6 +73,13 @@ export default function App() {
           <Route path="/modify" element={<SearchOrderId />} />
           <Route path="/card" element={<Card />} />
           <Route path="/create_order" element={<CreateOrder />} />
+          <Route path="/employee_setting" element={<Setting />} />
+          <Route path="/employee_help" element={<Help />} />
+          <Route path="/employee_request_book" element={<RequestList />} />
+          <Route path="/employee_profile" element={<EmployeeProfileDetails />} />
+          <Route path="/customer_details" element={<CustomerDetails />} />
+          <Route path="/payment_details" element={<PaymentCard/>} />
+          <Route path="/order_invoice" element={<Invoice/>} />
 
 
 

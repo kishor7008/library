@@ -8,9 +8,9 @@ export default function AddBook() {
             <div class="container-fluid px-1 py-5 mx-auto dexo">
                 <div class="row d-flex justify-content-center">
                     <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-                        <h3>Add Books</h3>
+                       
                         <div class="card">
-                            <h5 class="text-center mb-4">Powering world-class companies</h5>
+                           
                             <form class="form-card" onsubmit="event.preventDefault()">
                                 <div class="row justify-content-between text-left">
                                     {/* <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Category<span class="text-danger"> *</span></label>  <select class="form-select" aria-label="Disabled select example"
@@ -30,7 +30,7 @@ export default function AddBook() {
 
 
                                     </select> </div> */}
-                                    <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3">Book name<span class="text-danger"> *</span></label> <select style={{height:"6vh",marginTop:"6px"}}>
+                                    <div class="form-group col-sm-6 flex-column d-flex"><label class="form-control-label px-3">Book Category<span class="text-danger"> *</span></label> <select style={{height:"6vh",marginTop:"6px"}}>
                                         
                                     <option value="Literary Fiction">Literary Fiction</option>
                                         <option value="History">History</option>
