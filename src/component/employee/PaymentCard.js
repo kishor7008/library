@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useDebugValue, useState } from 'react'
 import './paymentCard.css'
 import EmployeeHeading from './EmployeeHeader'
 import { useNavigate } from 'react-router-dom'
@@ -14,11 +14,14 @@ let [studentId,setStudentId]=useState()
 
 const navigate=useNavigate()
 
-
+console.log(studentId)
 const payment=()=>{
-
-
+try {
+    
+let userDetail;
+    console.log("userget")
 fetch(`${API_URL}/get/user`,{
+    
     method:"POST",
     headers:{
         "Content-type":"application/json",
@@ -31,66 +34,49 @@ fetch(`${API_URL}/get/user`,{
 .then(data=>{
     console.log(data)
     if(data.status==true){
-        setStudentId(data.message._id)
-        return;
-    }else {
-        fetch(`${API_URL}/student/register`,{
+        fetch(`${API_URL}/order/ByAdmin`,{
             method:"POST",
             headers:{
                 "Content-type":"application/json",
-                Accept:"application/json",
-            },body:JSON.stringify({
-                name:customerDetails.name,
-                email:customerDetails.email,
-                phone:customerDetails.phone,
-                password:"4455"
+               Accept:"application/json",
+            },
+            body:JSON.stringify({
+                
+                    "bookId":bookDetails.bookId,
+                    "userId":data.message._id,
+                "quantity":customerDetails.quantity,
+                "total":customerDetails.quantity*bookDetails.price,
+                "day":customerDetails.day
+                
+                
             })
-        }).then(res=>res.json())
-.then(data=>{
-    console.log(data)
-    if(data.status==true){
-       
-        setStudentId(data.message._id)
-        return;
-    }else{
-        alert(data.message)
-        return
+           }).then(res=>res.json())
+           .then(data=>{
+            console.log(data)
+            if(data.status==true){
+                localStorage.clear()
+                localStorage.setItem("invoice",JSON.stringify(data.message))
+                alert("Order Create Successfully")
+                navigate("/order_invoice")
+        
+            }else{
+                console.log(data)
+                alert(data.message)
+            }
+           })
+
+        
+    }else {
+    console.log("userget2")
     }
 })
-    }
-})
+console.log("userget3")
+// console.log(userDetail,"ewhcacn333")
 
-   fetch(`${API_URL}/order/ByAdmin`,{
-    method:"POST",
-    headers:{
-        "Content-type":"application/json",
-       Accept:"application/json",
-    },
-    body:JSON.stringify({
-        
-            "bookId":bookDetails.bookId,
-            "userId":studentId,
-        "quantity":customerDetails.quantity,
-        "total":customerDetails.quantity*bookDetails.price,
-        "day":customerDetails.day
-        
-        
-    })
-   }).then(res=>res.json())
-   .then(data=>{
-    console.log(data)
-    if(data.status==true){
-        localStorage.clear()
-        localStorage.setItem("invoice",JSON.stringify(data.message))
-        alert("Order Create Successfully")
-        navigate("/order_invoice")
-
-    }else{
-        console.log(data)
-        alert(data.message)
-    }
-   })
-     
+  
+} catch (error) {
+    console.log(error)
+}
 
     // navigate("/order_invoice")
 }

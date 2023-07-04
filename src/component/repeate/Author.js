@@ -11,12 +11,11 @@ export default function Author() {
                             <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
                                 class="rounded-circle shadow-1-strong" width="150" height="150" />
                         </div>
-                        <h5 class="mb-3">Maria Smantha</h5>
-                        <h6 class="text-primary mb-3">Web Developer</h6>
+                        <h5 class="mb-3">Sidney Sheldon</h5>
+                        <h6 class="text-primary mb-3">Author</h6>
                         <p class="px-xl-3">
                             <i class="fas fa-quote-left pe-2"></i>Lorem ipsum dolor sit amet, consectetur
-                            adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic
-                            tenetur.
+                            Libraries store the energy that fuels the imagination. They open up windows to the world and inspire us to explore and achieve, and contribute to improving our quality of life. Libraries change lives for the better.
                         </p>
                         <ul class="list-unstyled d-flex justify-content-center mb-0">
                             <li>
@@ -41,12 +40,10 @@ export default function Author() {
                             <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
                                 class="rounded-circle shadow-1-strong" width="150" height="150" />
                         </div>
-                        <h5 class="mb-3">Lisa Cudrow</h5>
-                        <h6 class="text-primary mb-3">Graphic Designer</h6>
+                        <h5 class="mb-3">Anne Herbert</h5>
+                        <h6 class="text-primary mb-3">Author</h6>
                         <p class="px-xl-3">
-                            <i class="fas fa-quote-left pe-2"></i>Ut enim ad minima veniam, quis nostrum
-                            exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid commodi.
-                        </p>
+                            <i class="fas fa-quote-left pe-2"></i>Libraries will get you through times of no money better than money will get you through times of no libraries.</p>
                         <ul class="list-unstyled d-flex justify-content-center mb-0">
                             <li>
                                 <i class="fas fa-star fa-sm text-warning"></i>
@@ -70,12 +67,10 @@ export default function Author() {
                             <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
                                 class="rounded-circle shadow-1-strong" width="150" height="150" />
                         </div>
-                        <h5 class="mb-3">John Smith</h5>
-                        <h6 class="text-primary mb-3">Marketing Specialist</h6>
+                        <h5 class="mb-3">E.B. White</h5>
+                        <h6 class="text-primary mb-3">Author</h6>
                         <p class="px-xl-3">
-                            <i class="fas fa-quote-left pe-2"></i>At vero eos et accusamus et iusto odio
-                            dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.
-                        </p>
+                        A library is a good place to go when you feel unhappy, for there, in a book, you may find encouragement and comfort. A library is a good place to go when you feel bewildered or undecided, for there, in a book, you may have your question answered.</p>
                         <ul class="list-unstyled d-flex justify-content-center mb-0">
                             <li>
                                 <i class="fas fa-star fa-sm text-warning"></i>

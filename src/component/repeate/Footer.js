@@ -9,57 +9,57 @@ export default function Footer() {
                     <div class="container pt-4" style={{ width: "100%" }}>
                         <section class="mb-4">
                             <a
-                                class="btn btn-link btn-floating btn-lg text-dark m-1"
+                                class="btn btn-link btn-floating btn-lg text-dark m-2"
                                 href="#!"
                                 role="button"
                                 data-mdb-ripple-color="dark"
                                 style={{ borderRadius: "50%", width: "50px", height: "50px" }}
-                            ><i class="fab fa-facebook-f"></i
+                            ><i class="fab fa-facebook-f" style={{marginTop:"10px"}}></i
                             ></a>
 
                             <a
-                                class="btn btn-link btn-floating btn-lg text-dark m-1"
+                                class="btn btn-link btn-floating btn-lg text-dark m-2"
                                 href="#!"
                                 role="button"
                                 data-mdb-ripple-color="dark"
                                 style={{ borderRadius: "50%", width: "50px", height: "50px" }}
-                            ><i class="fab fa-twitter"></i
+                            ><i class="fab fa-twitter" style={{marginTop:"10px"}}></i
                             ></a>
 
                             <a
-                                class="btn btn-link btn-floating btn-lg text-dark m-1"
+                                class="btn btn-link btn-floating btn-lg text-dark m-2"
                                 href="#!"
                                 role="button"
                                 data-mdb-ripple-color="dark"
                                 style={{ borderRadius: "50%", width: "50px", height: "50px" }}
-                            ><i class="fab fa-google"></i
+                            ><i class="fab fa-google" style={{marginTop:"10px"}}></i
                             ></a>
 
                             <a
-                                class="btn btn-link btn-floating btn-lg text-dark m-1"
+                                class="btn btn-link btn-floating btn-lg text-dark m-2"
                                 href="#!"
                                 role="button"
                                 data-mdb-ripple-color="dark"
                                 style={{ borderRadius: "50%", width: "50px", height: "50px" }}
-                            ><i class="fab fa-instagram"></i
+                            ><i class="fab fa-instagram" style={{marginTop:"10px"}}></i
                             ></a>
 
                             <a
-                                class="btn btn-link btn-floating btn-lg text-dark m-1"
+                                class="btn btn-link btn-floating btn-lg text-dark m-2"
                                 href="#!"
                                 role="button"
                                 data-mdb-ripple-color="dark"
                                 style={{ borderRadius: "50%", width: "50px", height: "50px" }}
-                            ><i class="fab fa-linkedin"></i
+                            ><i class="fab fa-linkedin" style={{marginTop:"10px"}}></i
                             ></a>
                             <a
-                                class="btn btn-link btn-floating btn-lg text-dark m-1"
+                                class="btn btn-link btn-floating btn-lg text-dark m-2"
                                 href="#!"
                                 role="button"
                                 data-mdb-ripple-color="dark"
                                 style={{ borderRadius: "50%", width: "50px", height: "50px" }}
-                            ><i class="fab fa-github"></i
-                            ></a>
+                            ><i class="fab fa-github" style={{marginTop:"10px"}}></i>
+                            </a>
                         </section>
                     </div>
 

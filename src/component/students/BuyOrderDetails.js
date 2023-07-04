@@ -1,11 +1,9 @@
 import React from 'react'
-import './customerDetails.css'
-import EmployeeHeading from './EmployeeHeader'
+import '../employee/customerDetails.css'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { LocalActivity } from '@mui/icons-material'
-import { API_URL } from '../../App'
-export default function CustomerDetails() {
+import StudentHeading from './StudentHeading'
+export default function BuyOrderDatails() {
     
 const navigate=useNavigate()
 //customer details
@@ -24,78 +22,29 @@ const [country,setCountry]=useState()
 const[day,setDay]=useState()
 const[quantity,setQuantity]=useState()
 
+
+
+
+
+
+
+
     const details=()=>{
-
-        if(!fName || !lName || !adress || !city || !region || !zip || !country || !day || !quantity || !email || !phone){
-            alert("All Fields Required")
-            return
-        }
-            fetch(`${API_URL}/get/user`,{
-    
-                method:"POST",
-                headers:{
-                    "Content-type":"application/json",
-                   Accept:"application/json",
-                },
-                body:JSON.stringify({
-                    email
-                })
-            }).then(res=>res.json())
-            .then(data=>{
-                console.log(data)
-                if(data.status==true){
-                    let customerDetails= {name:fName+lName,
-                        adress,city,region,zip,country,email,phone,day,quantity}
-                    
-                        localStorage.setItem("customer",JSON.stringify(customerDetails))
-                   let data=localStorage.getItem("customer")
-                   
-                alert("Already have an account")
-                navigate("/payment_details")
+        // if(!fName || !lName || !adress || !city || !region || !zip || !country || !day || !quantity || !email || !phone){
+        //     alert("All Fields Required")
+        //     return
+        // }else{
+            let customerDetails= {name:fName+lName,
+                adress,city,region,zip,country,email,phone,day,quantity}
             
-                    
-                }else {
-                console.log("userget2")
-            
-                    fetch(`${API_URL}/student/register`,{
-                        method:"POST",
-                        headers:{
-                            "Content-type":"application/json",
-                            Accept:"application/json",
-                        },body:JSON.stringify({
-                            name:fName+" "+lName,
-                            email,
-                            phone,
-                            password:"4455"
-                        })
-                    }).then(res=>res.json())
-            .then(data=>{
-                console.log(data)
-                if(data.status==true){
-                alert("New User")
-                    let customerDetails= {name:fName+lName,
-                        adress,city,region,zip,country,email,phone,day,quantity}
-                    
-                        localStorage.setItem("customer",JSON.stringify(customerDetails))
-                   let data=localStorage.getItem("customer")
-                   navigate("/payment_details")
-                    
-                }else{
-                    alert(data.message)
-                    return
-                }
-            })
-                }
-            })
-
-
-
-           
-        
+                localStorage.setItem("customer",JSON.stringify(customerDetails))
+           let data=localStorage.getItem("customer")
+           navigate("/order_payment")
+        // }
     }
   return (
 <>
-<EmployeeHeading/>
+<StudentHeading/>
 <div style={{height:"20vh"}}></div>
 
    <section class="order-form m-4">

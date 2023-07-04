@@ -1,7 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './requestList.css'
+import { Loader } from "rsuite";
+
+import { API_URL } from '../../App'
+import { dateTime } from './OrderStatus'
 import EmployeeHeading from './EmployeeHeader'
 export default function RequestList() {
+    const [list,setList]=useState([])
+  const [loder, setLoder] = useState(true);
+
+    let token=localStorage.getItem("token")
+    const getList=()=>{
+        console.log("ewdxcf3wedcsxefcwe")
+fetch(`${API_URL}/request/list`,{
+    method:"GET",
+    headers:{
+        "Content-Type":"application/json",
+        Accept:"application/json",
+        "Authorization":`Bearer ${token}`
+    }
+}).then(res=>res.json())
+.then(data=>{
+    if(data.status==true){
+        setList(data.message)
+        setLoder(false)
+    }else{
+        alert(data.message)
+    }
+})
+    }
+
+    useEffect(()=>{
+        getList()
+    },[])
     return (
         <>
 
@@ -32,19 +63,29 @@ export default function RequestList() {
                                         <tr>
                                             <th>#</th>
                                             <th>Full Name</th>
-                                            <th>Age</th>
-                                            <th>Job Title</th>
-                                            <th>City</th>
+                                            <th>Book Name</th>
+                                            <th>Post Date</th>
+                                            <th>Country</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Vincent Williamson</td>
-                                            <td>31</td>
-                                            <td>iOS Developer</td>
-                                            <td>Sinaai-Waas</td>
+                                        {
+                                            loder ? <>
+                                            <div style={{width:"100%",height:"50vh",textAlign:"center"}}>
+                                
+                                              <Loader speed="fast" size="lg" style={{width:"400px"}} />
+                                              <hr />
+                                              </div>
+                                              
+                                            </> : list.map((item,index)=>(
+                                                <>
+                                                <tr>
+                                            <td>{index+1}</td>
+                                            <td>{item.student.name}</td>
+                                            <td>{item.name}</td>
+                                            <td>{dateTime(item.createdAt)}</td>
+                                            <td>{item.student.country}</td>
                                             <td>
                                                 <ul class="action-list">
                                                     <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
@@ -52,190 +93,14 @@ export default function RequestList() {
                                                 </ul>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Taylor Reyes</td>
-                                            <td>22</td>
-                                            <td>UI/UX Developer</td>
-                                            <td>Baileux</td>
-                                            <td>
-                                                <ul class="action-list">
-                                                    <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
-                                                    <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Taylor Reyes</td>
-                                            <td>22</td>
-                                            <td>UI/UX Developer</td>
-                                            <td>Baileux</td>
-                                            <td>
-                                                <ul class="action-list">
-                                                    <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
-                                                    <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr><tr>
-                                            <td>2</td>
-                                            <td>Taylor Reyes</td>
-                                            <td>22</td>
-                                            <td>UI/UX Developer</td>
-                                            <td>Baileux</td>
-                                            <td>
-                                                <ul class="action-list">
-                                                    <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
-                                                    <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr><tr>
-                                            <td>2</td>
-                                            <td>Taylor Reyes</td>
-                                            <td>22</td>
-                                            <td>UI/UX Developer</td>
-                                            <td>Baileux</td>
-                                            <td>
-                                                <ul class="action-list">
-                                                    <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
-                                                    <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr><tr>
-                                            <td>2</td>
-                                            <td>Taylor Reyes</td>
-                                            <td>22</td>
-                                            <td>UI/UX Developer</td>
-                                            <td>Baileux</td>
-                                            <td>
-                                                <ul class="action-list">
-                                                    <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
-                                                    <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr><tr>
-                                            <td>2</td>
-                                            <td>Taylor Reyes</td>
-                                            <td>22</td>
-                                            <td>UI/UX Developer</td>
-                                            <td>Baileux</td>
-                                            <td>
-                                                <ul class="action-list">
-                                                    <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
-                                                    <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr><tr>
-                                            <td>2</td>
-                                            <td>Taylor Reyes</td>
-                                            <td>22</td>
-                                            <td>UI/UX Developer</td>
-                                            <td>Baileux</td>
-                                            <td>
-                                                <ul class="action-list">
-                                                    <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
-                                                    <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr><tr>
-                                            <td>2</td>
-                                            <td>Taylor Reyes</td>
-                                            <td>22</td>
-                                            <td>UI/UX Developer</td>
-                                            <td>Baileux</td>
-                                            <td>
-                                                <ul class="action-list">
-                                                    <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
-                                                    <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr><tr>
-                                            <td>2</td>
-                                            <td>Taylor Reyes</td>
-                                            <td>22</td>
-                                            <td>UI/UX Developer</td>
-                                            <td>Baileux</td>
-                                            <td>
-                                                <ul class="action-list">
-                                                    <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
-                                                    <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr><tr>
-                                            <td>2</td>
-                                            <td>Taylor Reyes</td>
-                                            <td>22</td>
-                                            <td>UI/UX Developer</td>
-                                            <td>Baileux</td>
-                                            <td>
-                                                <ul class="action-list">
-                                                    <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
-                                                    <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Justin Block</td>
-                                            <td>26</td>
-                                            <td>Frontend Developer</td>
-                                            <td>Overland Park</td>
-                                            <td>
-                                                <ul class="action-list">
-                                                    <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
-                                                    <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Sean Guzman</td>
-                                            <td>26</td>
-                                            <td>Web Designer</td>
-                                            <td>Gloucester</td>
-                                            <td>
-                                                <ul class="action-list">
-                                                    <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
-                                                    <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Keith Carter</td>
-                                            <td>20</td>
-                                            <td>Graphic Designer</td>
-                                            <td>Oud-Turnhout</td>
-                                            <td>
-                                                <ul class="action-list">
-                                                    <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
-                                                    <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
+                                                </>
+                                            ))
+                                        }
+                                      
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="panel-footer">
-                                <div class="row">
-                                    <div class="col col-sm-6 col-xs-6">showing <b>5</b> out of <b>25</b> entries</div>
-                                    <div class="col-sm-6 col-xs-6">
-                                        <ul class="pagination hidden-xs pull-right">
-                                            <li><a href="#"></a></li>
-                                            <li class="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li><a href="#"></a></li>
-                                        </ul>
-                                        <ul class="pagination visible-xs pull-right">
-                                            <li><a href="#"></a></li>
-                                            <li><a href="#"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import EmployeeHeading from './EmployeeHeader'
 import { useNavigate } from 'react-router-dom'
 import { API_URL } from '../../App'
 export default function Invoice() {
 const navigate=useNavigate()
+const[details,setDetails]=useState()
 const orderDetails=JSON.parse(localStorage.getItem("invoice"))
 console.log(orderDetails.orderId)
     const createOrder=()=>{
-
-// navigate("/create_order")
+alert("Order Create Successfully")
+navigate("/create_order")
     }
     useEffect(()=>{
         fetch(`${API_URL}/order/details/${orderDetails.orderId}`,{
@@ -18,8 +19,13 @@ console.log(orderDetails.orderId)
                 Accept:"application/json"
             }
         }).then(res=>res.json())
-        .then(data=>console.log(data))
+        .then(data=>{
+            console.log(data.message)
+            setDetails(data.message)
+
+        })
     },[])
+    console.log(details)
     return (
         <>
         <EmployeeHeading/>
@@ -30,7 +36,7 @@ console.log(orderDetails.orderId)
                     <div class="container mb-5 mt-3">
                         <div class="row d-flex align-items-baseline">
                             <div class="col-xl-9">
-                                <p style={{ color: "#7e8d9f", fontSize: "20px" }}>Invoice  <strong>ID: #123-123</strong></p>
+                                <p style={{ color: "#7e8d9f", fontSize: "20px" }}>Invoice  <strong>{details && details.orderId}</strong></p>
                             </div>
                             <div class="col-xl-3 float-end">
                                 <a class="btn btn-light text-capitalize border-0" data-mdb-ripple-color="dark"><i
@@ -44,8 +50,8 @@ console.log(orderDetails.orderId)
                         <div class="container">
                             <div class="col-md-12">
                                 <div class="text-center">
-                                    <i class="fab fa-mdb fa-4x ms-0" style={{ color: "#5d9fc5" }}></i>
-                                    <p class="pt-0">MDBootstrap.com</p>
+                                    {/* <i class="fab fa-mdb fa-4x ms-0" style={{ color: "#5d9fc5" }}></i> */}
+                                    <p class="pt-0" style={{fontSize:"30px"}}>Memorial Library</p>
                                 </div>
 
                             </div>
@@ -54,22 +60,22 @@ console.log(orderDetails.orderId)
                             <div class="row">
                                 <div class="col-xl-8">
                                     <ul class="list-unstyled">
-                                        <li class="text-muted">To: <span style={{ color: "#5d9fc5" }}>John Lorem</span></li>
-                                        <li class="text-muted">Street, City</li>
-                                        <li class="text-muted">State, Country</li>
-                                        <li class="text-muted"><i class="fas fa-phone"></i> 123-456-789</li>
+                                        <li class="text-muted">To: <span style={{ color: "#5d9fc5" }}>{details && details.student.name}</span></li>
+                                        {/* <li class="text-muted">Street, City</li>
+                                        <li class="text-muted">State, Country</li> */}
+                                        <li class="text-muted"><i class="fas fa-phone">{details && details.student.phone}</i> </li>
                                     </ul>
                                 </div>
                                 <div class="col-xl-4">
                                     <p class="text-muted">Invoice</p>
                                     <ul class="list-unstyled">
                                         <li class="text-muted"><i class="fas fa-circle" style={{ color: "#84B0CA" }}></i> <span
-                                            class="fw-bold">ID:</span>#123-456</li>
+                                            class="fw-bold">ID:</span>{details && details.orderId}</li>
                                         <li class="text-muted"><i class="fas fa-circle" style={{ color: "#84B0CA" }}></i> <span
-                                            class="fw-bold">Creation Date: </span>Jun 23,2021</li>
+                                            class="fw-bold">Creation Date: </span>{details && details.createdAt}</li>
                                         <li class="text-muted"><i class="fas fa-circle" style={{ color: "#84B0CA" }}></i> <span
                                             class="me-1 fw-bold">Status:</span><span class="badge bg-warning text-black fw-bold">
-                                                Unpaid</span></li>
+                                                paid</span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -88,25 +94,12 @@ console.log(orderDetails.orderId)
                                     <tbody>
                                         <tr>
                                             <th scope="row">1</th>
-                                            <td>Pro Package</td>
-                                            <td>4</td>
-                                            <td>$200</td>
-                                            <td>$800</td>
+                                            <td>{details && details.bookDetails.name}</td>
+                                            <td>{details && details.bookDetails.quantity}</td>
+                                            <td>{details && details.bookDetails.price}</td>
+                                            <td>{details && details.bookDetails.price*details.bookDetails.quantity}</td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Web hosting</td>
-                                            <td>1</td>
-                                            <td>$10</td>
-                                            <td>$10</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Consulting</td>
-                                            <td>1 year</td>
-                                            <td>$300</td>
-                                            <td>$300</td>
-                                        </tr>
+                                      
                                     </tbody>
 
                                 </table>
@@ -118,8 +111,8 @@ console.log(orderDetails.orderId)
                                 </div>
                                 <div class="col-xl-3">
                                     <ul class="list-unstyled">
-                                        <li class="text-muted ms-3"><span class="text-black me-4">SubTotal</span>$1110</li>
-                                        <li class="text-muted ms-3 mt-2"><span class="text-black me-4">Tax(15%)</span>$111</li>
+                                        <li class="text-muted ms-3"><span class="text-black me-4">SubTotal</span>${details && details.bookDetails.price*details.bookDetails.quantity}</li>
+                                        <li class="text-muted ms-3 mt-2"><span class="text-black me-4">Tax(15%)</span>${details && (details.bookDetails.price*details.bookDetails.quantity)+((15*(details.bookDetails.price*details.bookDetails.quantity))/100)}</li>
                                     </ul>
                                     <p class="text-black float-start"><span class="text-black me-3"> Total Amount</span><span
                                         style={{ fontSize: "25px" }}>$1221</span></p>

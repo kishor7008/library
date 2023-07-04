@@ -11,7 +11,7 @@ export default function Libray() {
                         <div class="col-md-10 offset-md-1">
                             <div class="titlepage">
                                 <h2>Our <strong class="black">Library </strong></h2>
-                                <span>adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</span>
+                                <span>Our dedicated librarians are passionate about helping you find the perfect book. They are always ready to offer personalized recommendations, assist with research projects, or guide you through our vast catalog of digital resources. We believe in the transformative power of literature, and our staff is committed to creating an inclusive and welcoming environment for all visitors.</span>
                             </div>
                         </div>
                     </div>

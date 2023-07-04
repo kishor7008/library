@@ -5,6 +5,7 @@ import Author from './component/repeate/Author'
 import ContactUs from './component/repeate/ContactUs'
 import Footer from './component/repeate/Footer'
 import OurBook from './component/repeate/OurBook'
+import Contact from './component/repeate/Contact'
 import OurBook2 from './component/repeate/OurBook2'
 import OurBook3 from './component/repeate/OurBook3'
 import OurBook4 from './component/repeate/OurBook4'
@@ -41,6 +42,14 @@ import EmployeeProfileDetails from './component/employee/EmployeeProfileDetails'
 import CustomerDetails from './component/employee/CustomerDetails'
 import PaymentCard from './component/employee/PaymentCard'
 import Invoice from './component/employee/Invoice'
+import StudentProfile from './component/students/StudentProfile'
+import StudentSetting from './component/students/StudentSetting'
+import StudentHelp from './component/students/StudentHelp'
+import StudentLogout from './component/students/StudentLogout'
+import StudentAddBook from './component/students/StudentAddBook'
+import BuyOrderDatails from './component/students/BuyOrderDetails'
+import OrderPayment from './component/students/OrderPayment'
+// import Heading1 from './component/repeate/Heading1'
 export const API_URL = "http://localhost:4000"
 export default function App() {
   return (
@@ -51,7 +60,7 @@ export default function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/library" element={<Libray />} />
           <Route path="/books" element={<Book />} />
-          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/contactus" element={<Contact />} />
           <Route path="/login" element={<Login />} />
 
           {/* student */}
@@ -59,7 +68,13 @@ export default function App() {
           <Route path="/student_cart" element={<StudentCart />} />
           <Route path="/student_order" element={<OrderDetails />} />
           <Route path="/student_wallet" element={<Wallet />} />
-          <Route path="/slider" element={<Slider />} />
+          <Route path="/student_profile" element={<StudentProfile />} />
+          <Route path="/student_setting" element={<StudentSetting />} />
+          <Route path="/student_help" element={<StudentHelp />} />
+          <Route path="/student_logout" element={<StudentLogout />} />
+          <Route path="/student_addbook" element={<StudentAddBook />} />
+          <Route path="/details" element={<BuyOrderDatails />} />
+          <Route path="/order_payment" element={<OrderPayment />} />
 
           {/* employee */}
           <Route path="/employee_heading" element={<EmployeeHeading />} />
@@ -80,6 +95,9 @@ export default function App() {
           <Route path="/customer_details" element={<CustomerDetails />} />
           <Route path="/payment_details" element={<PaymentCard/>} />
           <Route path="/order_invoice" element={<Invoice/>} />
+
+
+
 
 
 

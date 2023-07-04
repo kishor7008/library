@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import './setting.css'
+import '../employee/setting.css'
 import { API_URL } from '../../App'
 import { useNavigate } from 'react-router-dom'
-import EmployeeHeading from './EmployeeHeader'
-export default function Setting() {
+import StudentHeading from './StudentHeading'
+export default function StudentSetting() {
     const[profile,setProfile]=useState()
     const[name,setName]=useState()
     const[email,setEmail]=useState()
     const[phone,setPhone]=useState()
+    const[country,setCountry]=useState()
+
 const navigate=useNavigate()
+
     let token=localStorage.getItem("token")
     const getProfile=()=>{
-    fetch(`${API_URL}/get/admin/profile`,{
+    fetch(`${API_URL}/get/profile`,{
         method:"GET",
         headers:{
             "Content-Type":"application/json",
@@ -24,12 +27,14 @@ const navigate=useNavigate()
         setName(data.name)
         setEmail(data.email)
         setPhone(data.phone)
-      
+        setCountry(data.country)
+       
     })
 
 }
-const profileUpdate=()=>{
-    fetch(`${API_URL}/update/admin/profile`,{
+const updateProfile=()=>{
+    console.log("2dkak")
+    fetch(`${API_URL}/update/profile`,{
         method:"POST",
         headers:{
             "Content-Type":"application/json",
@@ -37,7 +42,7 @@ const profileUpdate=()=>{
             "Authorization":`Bearer ${token}`
         },
         body:JSON.stringify({
-name,email,phone
+name,email,phone,country
         })
     }).then(res=>res.json())
     .then(data=>{
@@ -47,10 +52,10 @@ alert(data.message)
         alert(data.message)
        }
     })
-}
 
+}
 const deleteAccount=()=>{
-    fetch(`${API_URL}/delete/admin/profile`,{
+    fetch(`${API_URL}/account/delete`,{
         method:"DELETE",
         headers:{
             "Content-Type":"application/json",
@@ -73,7 +78,7 @@ useEffect(()=>{
 },[])
     return (
         <>
-            <EmployeeHeading />
+        <StudentHeading/>
             <div style={{ height: "20vh" }}></div>
             <div class=" bg-white " style={{ width: "80%", margin: "auto" }}>
                 <h4 class="pb-4 border-bottom" style={{ fontSize: "20px", fontWeight: "bod" }}>Account settings</h4>
@@ -105,17 +110,18 @@ useEffect(()=>{
                         </div>
                         <div class="col-md-6">
                             <label for="country">Country</label>
-                            <select name="country" id="country" class="bg-light">
-                                <option value="india" selected>India</option>
-                                <option value="usa">USA</option>
-                                <option value="uk">UK</option>
-                                <option value="uae">UAE</option>
+                            <select name="country" id="country" class="bg-light" value={country} onChange={(e)=>setCountry(e.target.value)}>
+                                <option value="india" selected={country =="india" ? true : false}>India</option>
+                                <option value="usa" selected={country =="usa" ? true : false}>USA</option>
+                                <option value="uk" selected={country =="uk" ? true : false}>UK</option>
+                                <option value="uae" selected={country =="uae" ? true : false}>UAE</option>
+                                <option value="pakistan" selected={country =="pakistan" ? true : false}>Pakistan</option>
                             </select>
                         </div>
                     </div>
                     
                     <div class="py-3 pb-4 border-bottom">
-                        <button class="btn btn-primary mr-3" onClick={()=>profileUpdate()}>Save</button>
+                        <button class="btn btn-primary mr-3" onClick={()=>updateProfile()}>Save</button>
                         <button class="btn border button">Cancel</button>
                     </div>
                     <div class="d-sm-flex align-items-center pt-3" id="deactivate">
@@ -124,7 +130,9 @@ useEffect(()=>{
                             <p>Details about your company account and password</p>
                         </div>
                         <div class="ml-auto">
-                            <button class="btn danger" onClick={()=>deleteAccount()}>Deactivate</button>
+                            <button class="btn danger" onClick={()=>{
+                                  deleteAccount()
+                            }}>Deactivate</button>
                         </div>
                     </div>
                 </div>

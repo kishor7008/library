@@ -1,39 +1,61 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Profile from './Profile'
-export default function StudentHeading() {
-    return (
-        <>
-            <header>
-                <div class="header">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
-                                <div class="full">
-                                    <div class="center-desk">
-                                        <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="#" /></a> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                                <div class="menu-area">
-                                    <div class="limit-box">
-                                        <nav class="main-menu">
-                                            <ul class="menu-area-main">
-                                                <li class="active"> <Link to='/student_home'>Home</Link> </li>
-                                                <li><Link to="/student_cart">Cart</Link></li>
-                                                <li><Link to='/student_order'>My Booking</Link></li>
-                                                <li><Link to='/student_wallet'>Wallet</Link></li>
-                                                <li><Link to='/'><Profile /></Link></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-        </>
-    )
-}
+
+
+import React, { useState } from "react";
+import "../repeate/heading1.css";
+import { Link } from "react-router-dom";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import Profile from "./Profile";
+const StudentHeading = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleNavbar = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <>
+      <nav>
+        <div className="logo">
+          <img
+            src="images/logo.png"
+            alt="Logo Image"
+            style={{ width: "270px" }}
+          />
+        </div>
+        <div
+          className={`hamburger ${isOpen ? "open" : ""}`}
+          onClick={toggleNavbar}
+        >
+          <div className="line1"></div>
+          <div className="line2"></div>
+          <div className="line3"></div>
+        </div>
+        <div style={{ width: "300px" }}></div>
+        <ul className={`nav-links ${isOpen ? "open" : ""}`}>
+          <li>
+            <Link to="/student_home">Home</Link>{" "}
+          </li>
+          <li>
+            <Link to="/student_cart">Cart</Link>
+          </li>
+          <li>
+            <Link to="/student_order">My Orders</Link>
+          </li>
+          <li>
+            <Link to="/student_wallet">Wallet</Link>
+          </li>
+          <li>
+            <Link to="/student_profile">
+              <Profile />
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </>
+  );
+};
+
+export default StudentHeading;

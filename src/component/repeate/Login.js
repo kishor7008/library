@@ -11,7 +11,9 @@ import Typography from "@mui/material/Typography";
 import { Container } from "@mui/material";
 import { API_URL } from "../../App";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 export const Login = () => {
+    
     const navigate = useNavigate()
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -54,22 +56,7 @@ export const Login = () => {
             >
                 <Grid container marginLeft={"30%"}>
                     <CssBaseline />
-                    {/* <Grid
-                        item
-                        xs={false}
-                        sm={4}
-                        md={7}
-                        sx={{
-                            backgroundImage: "url(https://source.unsplash.com/random)",
-                            backgroundRepeat: "no-repeat",
-                            backgroundColor: (t) =>
-                                t.palette.mode === "light"
-                                    ? t.palette.grey[50]
-                                    : t.palette.grey[900],
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                        }}
-                    /> */}
+                   
                     <Grid
                         item
                         xs={15}

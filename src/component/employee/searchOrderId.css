@@ -81,10 +81,6 @@ body .button {
 }
 
 
-input[type="submit"] {
-    -webkit-appearance: button;
-    cursor: pointer;
-}
 
 .Button,
 .Button:hover,

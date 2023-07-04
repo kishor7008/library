@@ -1,14 +1,14 @@
 
 import React, { useState } from 'react'
-import EmployeeHeading from './EmployeeHeader'
-import './EmployeeProfileDetails.css'
+import '../employee/EmployeeProfileDetails.css'
 import { useEffect } from 'react'
 import { API_URL } from '../../App'
-export default function EmployeeProfileDetails() {
+import StudentHeading from './StudentHeading'
+export default function StudentProfile() {
 const[profile,setProfile]=useState()
      let token=localStorage.getItem("token")
     const getProfile=()=>{
-    fetch(`${API_URL}/get/admin/profile`,{
+    fetch(`${API_URL}/get/profile`,{
         method:"GET",
         headers:{
             "Content-Type":"application/json",
@@ -31,7 +31,7 @@ const[profile,setProfile]=useState()
   return (
     
       <>
-    <EmployeeHeading />
+    <StudentHeading />
 
 <section class="section about-section gray-bg" id="about">
                 <div class="container">
@@ -39,8 +39,7 @@ const[profile,setProfile]=useState()
                         <div class="col-lg-6">
                             <div class="about-text go-to">
                                 <h3 class="dark-color">About Me</h3>
-                                <h6 class="theme-color lead">A library is a place where a lot of books are kept for reading. Every school, college, and the university has its own library. There are all types of books including science, literature, famous personalities, economics, commerce, etc. Students love to visit the library and read books.
-</h6>
+                                <h6 class="theme-color lead">I am a curious, disciplined student, driven by a thirst for knowledge and a desire to succeed. I embrace challenges, seek new information, and excel academically. Collaboration, organization, and personal growth are key to my approach. I value teamwork and believe in the power of diverse perspectives. Through extracurricular activities, I develop a well-rounded skill set. I am open to learning from mistakes, dedicated to continuous improvement, and ready to make a positive impact.</h6>
                                 <div class="row about-list">
                                     <div class="col-md-6">
                                         <div class="media">
