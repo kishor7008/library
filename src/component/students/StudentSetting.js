@@ -23,17 +23,15 @@ const navigate=useNavigate()
         }
     }).then(res=>res.json())
     .then(data=>{
-        console.log(data)
         setName(data.name)
         setEmail(data.email)
         setPhone(data.phone)
         setCountry(data.country)
        
-    })
+    }).catch(err=>alert(err.message))
 
 }
 const updateProfile=()=>{
-    console.log("2dkak")
     fetch(`${API_URL}/update/profile`,{
         method:"POST",
         headers:{
@@ -51,7 +49,7 @@ alert(data.message)
        }else{
         alert(data.message)
        }
-    })
+    }).catch(err=>alert(err.message))
 
 }
 const deleteAccount=()=>{
@@ -71,7 +69,7 @@ navigate("/")
        }else{
 alert(data.message)
        }
-    })
+    }).catch(err=>alert(err.message))
 }
 useEffect(()=>{
     getProfile()

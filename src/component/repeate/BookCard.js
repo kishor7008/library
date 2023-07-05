@@ -15,10 +15,9 @@ export default function BookCard() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.message);
         setLoder(false);
         setBook(data.message);
-      });
+      }).catch(err=>alert(err.message))
   };
   useEffect(() => {
     bookList();

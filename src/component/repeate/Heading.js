@@ -39,7 +39,6 @@ const Heading = () => {
 
 
   const handleSubmit = () => {
-   console.log(email,password)
     fetch(`${API_URL}/both/login`, {
         method: "POST",
         headers: {
@@ -51,10 +50,7 @@ const Heading = () => {
         })
     }).then(res => res.json())
         .then(data => {
-            console.log(data.message.role)
             if (data.message.role == "Student") {
-                
-                // localStorage.clear()
                 
                 localStorage.setItem("token",data.message.token)
                 localStorage.setItem("role",data.message.role)
@@ -64,8 +60,6 @@ const Heading = () => {
                 },1000)
                
             } else if (data.message.role == "Admin") {
-                
-                // localStorage.clear()
                 localStorage.setItem("token",data.message.token)
                 localStorage.setItem("role",data.message.role)
                 setErrShow(false)
@@ -78,7 +72,7 @@ const Heading = () => {
                 setErrShow(true)
 
             }
-        })
+        }).catch(err=>alert(err.message))
 };
 
 
@@ -133,7 +127,7 @@ const[rshow,setRshow]=useState()
         setRerror(data.message)
         setRshow(true)
     }
-  })
+  }).catch(err=>alert(err.message))
   }
   return (
     <>

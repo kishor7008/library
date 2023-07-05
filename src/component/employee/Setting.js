@@ -20,12 +20,11 @@ const navigate=useNavigate()
         }
     }).then(res=>res.json())
     .then(data=>{
-        console.log(data)
         setName(data.name)
         setEmail(data.email)
         setPhone(data.phone)
       
-    })
+    }).catch(err=>alert(err.message))
 
 }
 const profileUpdate=()=>{
@@ -46,7 +45,7 @@ alert(data.message)
        }else{
         alert(data.message)
        }
-    })
+    }).catch(err=>alert(err.message))
 }
 
 const deleteAccount=()=>{
@@ -66,7 +65,7 @@ navigate("/")
        }else{
 alert(data.message)
        }
-    })
+    }).catch(err=>alert(err.message))
 }
 useEffect(()=>{
     getProfile()

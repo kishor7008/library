@@ -52,15 +52,7 @@ const EmployeeHomeCart = () => {
     setBookImage(image);
     setBookDes(description);
     setBookId(id);
-    console.log(
-      category,
-      name,
-      image,
-      description,
-      author,
-      id,
-      "line 34r5jweiugfy3e7tfuy c1b7623egdi6---------------------------------------------------------------------------------------"
-    );
+    
   };
   const handleClose = () => setOpen(false);
 
@@ -71,9 +63,7 @@ const EmployeeHomeCart = () => {
         setLoder(false)
         setMovies(response.data.message);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(err=>alert(err.message))
   };
 
   useEffect(() => {
@@ -105,7 +95,7 @@ const EmployeeHomeCart = () => {
         } else {
           alert(data.message);
         }
-      });
+      }).catch(err=>alert(err.message))
     return false;
   };
 
@@ -126,7 +116,7 @@ const EmployeeHomeCart = () => {
         } else {
           alert(data.message);
         }
-      });
+      }).catch(err=>alert(err.message))
   };
 
   const renderMovieListCardMode = (data) => {
@@ -487,10 +477,7 @@ const EmployeeHomeCart = () => {
               <button
                 type="button"
                 className="btn btn-primary btn-show-movie"
-                // data-bs-toggle="modal"
-                // data-bs-target="#movie-modal"
-                // data-id={item.id}
-                onClick={() => console.log("2d2")}
+               
               >
                 More
               </button>
@@ -516,7 +503,7 @@ const EmployeeHomeCart = () => {
         // Show the movie modal with the data
       })
       .catch((error) => {
-        console.log(error);
+       alert(error.message);
       });
   };
 

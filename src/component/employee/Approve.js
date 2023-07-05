@@ -14,14 +14,12 @@ export default function Approve() {
 
         }).then(res => res.json())
             .then(data => {
-                // console.log(data.message)
                 setData(data.message)
 
-            })
+            }).catch(err=>alert(err.message))
     }
 
     const approveOrder = (id) => {
-        console.log(id)
         fetch(`${API_URL}/approve/order/${id}/Approved`, {
             method: "PUT",
             headers: {
@@ -31,16 +29,14 @@ export default function Approve() {
 
         }).then(res => res.json())
             .then(data => {
-                console.log(data)
-                // setData(data.message)
+                
 
-            })
+            }).catch(err=>alert(err.message))
 
     }
     useEffect(() => {
         pendingList()
     }, [])
-    // console.log(data, "lime 25")
     return (
         <>
             <EmployeeHeading />

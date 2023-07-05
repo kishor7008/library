@@ -51,7 +51,6 @@ export default function OrderStatus() {
       .then((res) => res.json())
       .then((data) => {
         if(data.status==true){
-          console.log(data.message, "line 30");
           setDetails(data.message);
           setListShow(false);
           setCardShow(true);
@@ -70,7 +69,6 @@ export default function OrderStatus() {
   };
 
   const showData = (orderType) => {
-    console.log(orderType, "line 14");
     fetch(`${API_URL}/order/${orderType}`, {
       method: "GET",
       headers: {
@@ -80,7 +78,6 @@ export default function OrderStatus() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.message);
         setData(data.message);
         setListShow(true);
         setCardShow(false);
@@ -107,11 +104,9 @@ export default function OrderStatus() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
       }).catch((err)=>{
         alert(err.message)
       })
-    console.log(status);
   };
   useEffect(() => {
     showData(orderType);
@@ -119,7 +114,6 @@ export default function OrderStatus() {
   useEffect(() => {
     showData(orderType);
   }, [orderType]);
-  console.log(orderType);
 
   
   return (

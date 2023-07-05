@@ -32,14 +32,13 @@ export default function StudentCart() {
             }else{
                 alert(data.mesage)
             }
-        })
+        }).catch(err=>alert(err.message))
         }
         useEffect(()=>{
             cartDetails()
             // totalAmmount()
         },[])
         const deleteCart=(id)=>{
-            console.log(id)
             fetch(`${API_URL}/delete/item/cart/${id}`,{
                 method:"DELETE",
                 headers:{
@@ -49,7 +48,6 @@ export default function StudentCart() {
                 }
             }).then(res=>res.json())
             .then(data=>{
-                console.log(data)
                 if(data.status==true){
                     cartDetails()
                    
@@ -58,7 +56,7 @@ export default function StudentCart() {
                     alert(data.message)
     
                 }
-            })
+            }).catch(err=>alert(err.message))
         }
 
 

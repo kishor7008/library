@@ -6,7 +6,6 @@ export default function Invoice() {
 const navigate=useNavigate()
 const[details,setDetails]=useState()
 const orderDetails=JSON.parse(localStorage.getItem("invoice"))
-console.log(orderDetails.orderId)
     const createOrder=()=>{
 alert("Order Create Successfully")
 navigate("/create_order")
@@ -20,12 +19,10 @@ navigate("/create_order")
             }
         }).then(res=>res.json())
         .then(data=>{
-            console.log(data.message)
             setDetails(data.message)
 
-        })
+        }).catch(err=>alert(err.message))
     },[])
-    console.log(details)
     return (
         <>
         <EmployeeHeading/>

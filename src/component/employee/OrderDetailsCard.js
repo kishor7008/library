@@ -2,7 +2,6 @@ import React from 'react'
 import './orderDetails.css'
 import { dateTime } from './OrderStatus'
 export default function OrderDetailsCard(props) {
-    console.log(props.data.bookDetails, "from card")
     return (
         <>
             {/* <div class="container-fluid my-5 d-sm-flex justify-content-center" style={{ width: "90%" }}> */}

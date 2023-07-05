@@ -11,7 +11,6 @@ export default function RequestList() {
 
     let token=localStorage.getItem("token")
     const getList=()=>{
-        console.log("ewdxcf3wedcsxefcwe")
 fetch(`${API_URL}/request/list`,{
     method:"GET",
     headers:{
@@ -27,7 +26,7 @@ fetch(`${API_URL}/request/list`,{
     }else{
         alert(data.message)
     }
-})
+}).catch(err=>alert(err.message))
     }
 
     useEffect(()=>{

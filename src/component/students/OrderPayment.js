@@ -7,7 +7,6 @@ export default function OrderPayment() {
   let token=localStorage.getItem("token")
     let book=JSON.parse(localStorage.getItem("book"))
     const orderComplete=(e)=>{
-        console.log("dwqdxcewqd2qxwd")
         e.preventDefault()
         fetch(`${API_URL}/buy/book`,{
             method:"POST",
@@ -34,7 +33,7 @@ navigate("/student_home")
 }else{
 alert(data.message)
 }
-          })
+          }).catch(err=>alert(err.message))
         return false; 
     }
   return (

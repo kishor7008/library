@@ -42,7 +42,6 @@ const[quantity,setQuantity]=useState()
                 })
             }).then(res=>res.json())
             .then(data=>{
-                console.log(data)
                 if(data.status==true){
                     let customerDetails= {name:fName+lName,
                         adress,city,region,zip,country,email,phone,day,quantity}
@@ -55,7 +54,6 @@ const[quantity,setQuantity]=useState()
             
                     
                 }else {
-                console.log("userget2")
             
                     fetch(`${API_URL}/student/register`,{
                         method:"POST",
@@ -70,7 +68,6 @@ const[quantity,setQuantity]=useState()
                         })
                     }).then(res=>res.json())
             .then(data=>{
-                console.log(data)
                 if(data.status==true){
                 alert("New User")
                     let customerDetails= {name:fName+lName,
@@ -84,7 +81,7 @@ const[quantity,setQuantity]=useState()
                     alert(data.message)
                     return
                 }
-            })
+            }).catch(err=>alert(err.message))
                 }
             })
 

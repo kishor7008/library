@@ -33,7 +33,6 @@ export default function BuyBookCard() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.message);
         setAuthor(data.message.author);
         setImage(data.message.image);
         setName(data.message.name);
@@ -41,7 +40,7 @@ export default function BuyBookCard() {
         setBookId(data.message._id);
         setDescription(data.message.description);
         setPrice(data.message.price);
-      });
+      }).catch(err=>alert(err.message))
     setShow(true);
   };
 

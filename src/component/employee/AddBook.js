@@ -26,7 +26,6 @@ const token=localStorage.getItem("token")
         )
     }).then(res=>res.json())
     .then(data=>{
-        console.log(data)
         if(data.status==true){
             alert(data.message)
             setName("")

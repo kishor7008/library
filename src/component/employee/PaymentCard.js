@@ -9,17 +9,13 @@ export default function PaymentCard() {
 let bookDetails=JSON.parse(localStorage.getItem("bookDetails"))
 let customerDetails=JSON.parse(localStorage.getItem("customer"))
 let [studentId,setStudentId]=useState()
-// console.log(bookDetails,customerDetails)
-// console.log(bookDetails.category)
 
 const navigate=useNavigate()
 
-console.log(studentId)
 const payment=()=>{
 try {
     
 let userDetail;
-    console.log("userget")
 fetch(`${API_URL}/get/user`,{
     
     method:"POST",
@@ -32,7 +28,6 @@ fetch(`${API_URL}/get/user`,{
     })
 }).then(res=>res.json())
 .then(data=>{
-    console.log(data)
     if(data.status==true){
         fetch(`${API_URL}/order/ByAdmin`,{
             method:"POST",
@@ -52,7 +47,6 @@ fetch(`${API_URL}/get/user`,{
             })
            }).then(res=>res.json())
            .then(data=>{
-            console.log(data)
             if(data.status==true){
                 localStorage.clear()
                 localStorage.setItem("invoice",JSON.stringify(data.message))
@@ -60,25 +54,19 @@ fetch(`${API_URL}/get/user`,{
                 navigate("/order_invoice")
         
             }else{
-                console.log(data)
                 alert(data.message)
             }
-           })
+           }).catch(err=>alert(err.message))
 
         
     }else {
-    console.log("userget2")
     }
 })
-console.log("userget3")
-// console.log(userDetail,"ewhcacn333")
 
   
 } catch (error) {
-    console.log(error)
 }
 
-    // navigate("/order_invoice")
 }
   return (
 

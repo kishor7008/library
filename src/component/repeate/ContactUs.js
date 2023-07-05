@@ -8,7 +8,6 @@ export default function ContactUs() {
     const[message,setMessage]=useState()
     const contactme=(e)=>{
         e.preventDefault()
-        console.log(name,email,message)
         try {
             fetch(`${API_URL}/contactme`,{
                 method:"POST",
@@ -31,7 +30,7 @@ export default function ContactUs() {
                 }
             })
         } catch (error) {
-            alert(error)
+            alert(error.message)
         }
        
     }

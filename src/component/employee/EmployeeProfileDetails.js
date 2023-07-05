@@ -17,12 +17,10 @@ const[profile,setProfile]=useState()
         }
     }).then(res=>res.json())
     .then(data=>{
-        console.log(data)
         setProfile(data)
-    })
+    }).catch(err=>alert(err.message))
 
 }
-    // console.log(profile)
     useEffect(()=>{
     getProfile()
      },[])

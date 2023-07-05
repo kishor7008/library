@@ -28,7 +28,7 @@ const addBook=()=>{
         }else{
             alert(data.message)
         }
-    })
+    }).catch(err=>alert(err.message))
 }
 
     return (

@@ -30,7 +30,6 @@ export const Login = () => {
             })
         }).then(res => res.json())
             .then(data => {
-                console.log(data.message.role)
                 if (data.message.role == "Student") {
                     navigate('/student_home')
                     localStorage.clear()
@@ -43,7 +42,7 @@ export const Login = () => {
                     navigate('/')
 
                 }
-            })
+            }).catch(err=>alert(err.message))
     };
 
     return (

@@ -24,14 +24,13 @@ export default function OrderDetails() {
         }
      }).then(res=>res.json())
      .then(data=>{
-        console.log(data)
         if(data.status==true){
             setList(data.message)
             setLoder(false);
         }else{
             alert(data.message)
         }
-     })
+     }).catch(err=>alert(err.message))
     }
     useEffect(()=>{
         allOrder()

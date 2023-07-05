@@ -50,7 +50,7 @@ import StudentAddBook from './component/students/StudentAddBook'
 import BuyOrderDatails from './component/students/BuyOrderDetails'
 import OrderPayment from './component/students/OrderPayment'
 // import Heading1 from './component/repeate/Heading1'
-export const API_URL = "http://localhost:4000"
+export const API_URL = "https://library-backend-jjzf.onrender.com"
 export default function App() {
   return (
     <>
