@@ -255,7 +255,12 @@ const[rshow,setRshow]=useState()
              <p>
                Not a member? <a onClick={()=>{handleClose();handleOpen1()}} style={{cursor:"pointer"}}>Register</a>
              </p>
+             <div>Admin Credential : kishor@gmail.com</div>
+             <div>Password : 4455</div>
+             <div>For User, you can register</div>
+
            </div>
+          
          </div>
        </div>
      </Box>
